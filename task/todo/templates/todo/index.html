@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/" method="POST" name="Create Task" novalidate>
+        {% csrf_token %}
+        
+        {{ form }}
+        <button type="submit">Add Todo</button>
+    </form>
+
+    {% for todo in todos %}
+        <p>{{ todo }} <a href="{% url 'edit_todo' todo.id %}">Edit</a ><a href="{% url 'delete_todo' todo.id %}">Delete</a></p>
+    {% endfor %}
+</body>
+</html>
